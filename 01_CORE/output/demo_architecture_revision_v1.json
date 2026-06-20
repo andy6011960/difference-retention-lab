@@ -1,0 +1,160 @@
+{
+  "revision_id": "DEMO_ARCHITECTURE_REVISION_v1_3",
+  "core_verdict": "CORE_GEN_1_READY",
+  "gen_2_status": "GEN_2_PROGRESS_4_OF_4",
+  "gen_2_verdict": "CORE_GEN_2_READY",
+  "passed_count": 30,
+  "failed_count": 0,
+  "checks": [
+    {
+      "name": "ENVIRONMENT_CREATED",
+      "passed": true,
+      "details": "Demo environment was created."
+    },
+    {
+      "name": "BOOK_ID_PRESENT",
+      "passed": true,
+      "details": "book_id=DEMO_BOOK_ENVIRONMENT_v1_2"
+    },
+    {
+      "name": "TITLE_PRESENT",
+      "passed": true,
+      "details": "title=Demo Book Environment"
+    },
+    {
+      "name": "INVARIANT_PRESENT",
+      "passed": true,
+      "details": "invariant=DELTA_RETENTION_INVARIANT"
+    },
+    {
+      "name": "INVARIANT_INTERFACE",
+      "passed": true,
+      "details": "Invariant exposes evaluate(state)."
+    },
+    {
+      "name": "PAGES_REGISTERED",
+      "passed": true,
+      "details": "pages=['PAGE_POSITIVE_DECAY', 'PAGE_INVERSE']"
+    },
+    {
+      "name": "INITIAL_PAGE_SET",
+      "passed": true,
+      "details": "initial_page=PAGE_POSITIVE_DECAY"
+    },
+    {
+      "name": "SPINES_REGISTERED",
+      "passed": true,
+      "details": "spines=['SPINE_LOW_DELTA_TURN', 'SPINE_RETURN_AFTER_INVERSION']"
+    },
+    {
+      "name": "SPINE_ENDPOINTS_VALID",
+      "passed": true,
+      "details": "All spine endpoints point to registered pages."
+    },
+    {
+      "name": "OBSERVER_PRESENT",
+      "passed": true,
+      "details": "Observer object exists."
+    },
+    {
+      "name": "TRANSITION_ENGINE_PRESENT",
+      "passed": true,
+      "details": "engine=TransitionEngine"
+    },
+    {
+      "name": "TRANSITION_ENGINE_INTERFACE",
+      "passed": true,
+      "details": "TransitionEngine exposes execute_transition(...)."
+    },
+    {
+      "name": "RETENTION_ENGINE_PRESENT",
+      "passed": true,
+      "details": "engine=RetentionEngine"
+    },
+    {
+      "name": "RETENTION_ENGINE_INTERFACE",
+      "passed": true,
+      "details": "RetentionEngine exposes evaluate_retention(...)."
+    },
+    {
+      "name": "MEMORY_ENGINE_PRESENT",
+      "passed": true,
+      "details": "engine=MemoryEngine"
+    },
+    {
+      "name": "MEMORY_ENGINE_INTERFACE",
+      "passed": true,
+      "details": "MemoryEngine exposes remember(...)."
+    },
+    {
+      "name": "TOPOLOGY_ENGINE_PRESENT",
+      "passed": true,
+      "details": "engine=TopologyEngine"
+    },
+    {
+      "name": "TOPOLOGY_ENGINE_INTERFACE",
+      "passed": true,
+      "details": "TopologyEngine exposes validate(...)."
+    },
+    {
+      "name": "TOPOLOGY_VALID",
+      "passed": true,
+      "details": "Topology is valid."
+    },
+    {
+      "name": "JOURNAL_PRESENT",
+      "passed": true,
+      "details": "Journal object exists."
+    },
+    {
+      "name": "STATE_PRESENT",
+      "passed": true,
+      "details": "BookState object exists."
+    },
+    {
+      "name": "RUN_COMPLETED",
+      "passed": true,
+      "details": "Demo run completed."
+    },
+    {
+      "name": "FINAL_STATE_ALIVE",
+      "passed": true,
+      "details": "alive=True"
+    },
+    {
+      "name": "TAU_I_EXPECTED",
+      "passed": true,
+      "details": "tau_i=30.0"
+    },
+    {
+      "name": "TRANSITIONS_EXPECTED",
+      "passed": true,
+      "details": "transition_count=7"
+    },
+    {
+      "name": "ORIENTATION_SWITCHES_EXPECTED",
+      "passed": true,
+      "details": "orientation_switch_count=21"
+    },
+    {
+      "name": "OBSERVER_SNAPSHOTS_EXPECTED",
+      "passed": true,
+      "details": "snapshots=30"
+    },
+    {
+      "name": "MEMORY_RECORDS_EXPECTED",
+      "passed": true,
+      "details": "records=30"
+    },
+    {
+      "name": "JOURNAL_EVENTS_PRESENT",
+      "passed": true,
+      "details": "events=29"
+    },
+    {
+      "name": "ENVIRONMENT_EXPORT_CREATED",
+      "passed": true,
+      "details": "export=output\\book_environment_demo_revision_v1.json"
+    }
+  ]
+}

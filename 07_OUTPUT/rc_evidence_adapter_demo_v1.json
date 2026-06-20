@@ -1,0 +1,49 @@
+{
+  "adapter_version": "RC_EVIDENCE_ADAPTER_v1",
+  "adapter_name": "RC Evidence Adapter v1",
+  "created_at": "2026-06-20T18:42:07",
+  "input_record_type": "EVIDENCE_RECORD_STREAM",
+  "output_record_type": "RC_EVIDENCE_STATE_STREAM",
+  "environment": "RC_ENVIRONMENT",
+  "state_count": 2,
+  "states": [
+    {
+      "state_id": "RC_STATE_EVIDENCE_RC_001",
+      "evidence_id": "EVIDENCE_RC_001",
+      "raw_observation_id": "RC_001",
+      "value": 4.96,
+      "unit": "V",
+      "channel": "VC",
+      "source": "M830B multimeter",
+      "origin_label": "DIRECT_MEASUREMENT",
+      "evidence_status": "ACCEPTED_AS_EVIDENCE",
+      "confidence": 1.0,
+      "metadata": {
+        "origin_label": "DIRECT_MEASUREMENT"
+      },
+      "adapter_version": "RC_EVIDENCE_ADAPTER_v1",
+      "provenance_preserved": true,
+      "raw_value_preserved": true,
+      "adapter_interpretation_performed": false
+    },
+    {
+      "state_id": "RC_STATE_EVIDENCE_RC_002",
+      "evidence_id": "EVIDENCE_RC_002",
+      "raw_observation_id": "RC_002",
+      "value": 0.03,
+      "unit": "V",
+      "channel": "OUT1",
+      "source": "M830B multimeter",
+      "origin_label": "INSTRUMENTAL_NOISE",
+      "evidence_status": "WEAK_EVIDENCE",
+      "confidence": 0.9,
+      "metadata": {
+        "is_noise": true
+      },
+      "adapter_version": "RC_EVIDENCE_ADAPTER_v1",
+      "provenance_preserved": true,
+      "raw_value_preserved": true,
+      "adapter_interpretation_performed": false
+    }
+  ]
+}
