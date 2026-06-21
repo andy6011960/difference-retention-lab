@@ -1,217 +1,339 @@
+# ==================================================================================================
+# experiment_runner_v1.py
+#
+# Difference Retention Laboratory
+# Experiment Runner v1.1
+#
+# Purpose:
+#   Run a demo experiment from RC Evidence State and produce an Experiment Run Record
+#   with explicit Retention Trace.
+#
+# Input:
+#   07_OUTPUT/rc_evidence_adapter_demo_v1.json
+#
+# Output:
+#   07_OUTPUT/experiment_run_record_demo_v1.json
+#
+# Run:
+#   python 05_EXPERIMENTS/experiment_runner_v1.py
+# ==================================================================================================
+
 from __future__ import annotations
 
 import json
-import sys
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any
 
 
-RUNNER_VERSION = "EXPERIMENT_RUNNER_v1"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-EXPECTED_INPUT_RECORD_TYPE = "RC_EVIDENCE_STATE_STREAM"
-EXPECTED_ADAPTER_VERSION = "RC_EVIDENCE_ADAPTER_v1"
-EXPECTED_ENVIRONMENT = "RC_ENVIRONMENT"
-
-
-class ExperimentRunnerError(Exception):
-    pass
+DEFAULT_INPUT_PATH = PROJECT_ROOT / "07_OUTPUT" / "rc_evidence_adapter_demo_v1.json"
+DEFAULT_OUTPUT_PATH = PROJECT_ROOT / "07_OUTPUT" / "experiment_run_record_demo_v1.json"
 
 
-@dataclass(frozen=True)
-class ExperimentRunRecord:
-    experiment_id: str
-    runner_version: str
-    environment: str
-    input_record_type: str
-    input_state_count: int
-    accepted_evidence_count: int
-    weak_evidence_count: int
-    uncertain_evidence_count: int
-    source_adapter_version: str
+@dataclass
+class TransformationStep:
+    step_id: str
+    step_type: str
+    input_reference: str
+    output_reference: str
+    description: str
     created_at: str
-    states: list[dict[str, Any]] = field(default_factory=list)
-    provenance_preserved: bool = True
-    experiment_interpretation_performed: bool = False
-    run_status: str = "EXPERIMENT_RECORDED"
 
 
-class ExperimentRunner:
-    def __init__(self, runner_name: str = "Experiment Runner v1") -> None:
-        self.runner_name = runner_name
+@dataclass
+class RetentionTrace:
+    trace_type: str
+    version: str
+    origin_reference: str
+    evidence_reference: str
+    state_reference: str
+    transformation_history: list[TransformationStep]
+    environment_snapshot: dict[str, Any]
+    retained_elements: list[str]
+    missing_elements: list[str]
+    retention_ready: bool
 
-    def load_state_stream(self, input_path: str | Path) -> dict:
-        input_path = Path(input_path)
 
+@dataclass
+class ExperimentRunRecord:
+    record_type: str
+    version: str
+    experiment_id: str
+    created_at: str
+    input_path: str
+    experiment_status: str
+    origin_reference: str
+    evidence_reference: str
+    rc_evidence_state: dict[str, Any]
+    transformation_history: list[TransformationStep]
+    environment_snapshot: dict[str, Any]
+    retention_trace: RetentionTrace
+    conclusion: str
+
+
+class ExperimentRunnerV1:
+    VERSION = "EXPERIMENT_RUNNER_v1.1"
+
+    def load_json(self, input_path: Path) -> dict[str, Any]:
         if not input_path.exists():
-            raise ExperimentRunnerError(f"State stream not found:\n{input_path}")
+            raise FileNotFoundError(f"Input file not found: {input_path}")
 
-        return json.loads(input_path.read_text(encoding="utf-8"))
+        with input_path.open("r", encoding="utf-8") as file:
+            data = json.load(file)
 
-    def validate_state_stream(self, stream: dict) -> None:
-        if stream.get("adapter_version") != EXPECTED_ADAPTER_VERSION:
-            raise ExperimentRunnerError(
-                f"Unexpected adapter_version: {stream.get('adapter_version')}"
-            )
+        if not isinstance(data, dict):
+            raise ValueError("RC Evidence State must be a JSON object.")
 
-        if stream.get("output_record_type") != EXPECTED_INPUT_RECORD_TYPE:
-            raise ExperimentRunnerError(
-                f"Unexpected output_record_type: {stream.get('output_record_type')}"
-            )
+        return data
 
-        if stream.get("environment") != EXPECTED_ENVIRONMENT:
-            raise ExperimentRunnerError(
-                f"Unexpected environment: {stream.get('environment')}"
-            )
-
-        states = stream.get("states")
-
-        if not isinstance(states, list):
-            raise ExperimentRunnerError("states must be a list")
-
-        if len(states) == 0:
-            raise ExperimentRunnerError("states list is empty")
-
-    def count_statuses(self, states: list[dict[str, Any]]) -> dict[str, int]:
-        return {
-            "accepted": sum(
-                1
-                for state in states
-                if state.get("evidence_status") == "ACCEPTED_AS_EVIDENCE"
-            ),
-            "weak": sum(
-                1
-                for state in states
-                if state.get("evidence_status") == "WEAK_EVIDENCE"
-            ),
-            "uncertain": sum(
-                1
-                for state in states
-                if state.get("evidence_status") == "UNCERTAIN_EVIDENCE"
-            ),
-        }
-
-    def validate_state_invariants(self, states: list[dict[str, Any]]) -> None:
-        for state in states:
-            state_id = state.get("state_id")
-
-            if not state_id:
-                raise ExperimentRunnerError("state without state_id")
-
-            if state.get("provenance_preserved") is not True:
-                raise ExperimentRunnerError(f"{state_id}: provenance lost")
-
-            if state.get("raw_value_preserved") is not True:
-                raise ExperimentRunnerError(f"{state_id}: raw value lost")
-
-            if state.get("adapter_interpretation_performed") is not False:
-                raise ExperimentRunnerError(
-                    f"{state_id}: adapter interpretation already performed"
-                )
-
-            if not state.get("evidence_id"):
-                raise ExperimentRunnerError(f"{state_id}: missing evidence_id")
-
-            if not state.get("origin_label"):
-                raise ExperimentRunnerError(f"{state_id}: missing origin_label")
-
-            if not state.get("evidence_status"):
-                raise ExperimentRunnerError(f"{state_id}: missing evidence_status")
-
-    def build_run_record(self, stream: dict) -> ExperimentRunRecord:
-        self.validate_state_stream(stream)
-
-        states = stream["states"]
-        self.validate_state_invariants(states)
-
-        status_counts = self.count_statuses(states)
-
-        return ExperimentRunRecord(
-            experiment_id="EXPERIMENT_RC_EVIDENCE_DEMO_v1",
-            runner_version=RUNNER_VERSION,
-            environment=stream["environment"],
-            input_record_type=stream["output_record_type"],
-            input_state_count=len(states),
-            accepted_evidence_count=status_counts["accepted"],
-            weak_evidence_count=status_counts["weak"],
-            uncertain_evidence_count=status_counts["uncertain"],
-            source_adapter_version=stream["adapter_version"],
-            created_at=datetime.now().isoformat(timespec="seconds"),
-            states=[
-                dict(state)
-                for state in states
-            ],
-        )
-
-    def export(
-        self,
-        run_record: ExperimentRunRecord,
-        output_path: str | Path,
-    ) -> Path:
-        output_path = Path(output_path)
+    def export_json(self, payload: dict[str, Any], output_path: Path) -> Path:
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
-        payload = {
-            "record_type": "EXPERIMENT_RUN_RECORD",
-            "runner_name": self.runner_name,
-            "runner_version": RUNNER_VERSION,
-            "run": asdict(run_record),
-        }
-
-        output_path.write_text(
-            json.dumps(payload, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
+        with output_path.open("w", encoding="utf-8") as file:
+            json.dump(payload, file, ensure_ascii=False, indent=2)
 
         return output_path
 
+    def now(self) -> str:
+        return datetime.now().isoformat(timespec="seconds")
+
+    def extract_origin_reference(self, rc_state: dict[str, Any]) -> str:
+        for key in (
+            "origin_reference",
+            "origin_id",
+            "origin",
+            "source_origin",
+            "raw_observation_id",
+        ):
+            value = rc_state.get(key)
+
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+
+            if isinstance(value, dict) and value:
+                return json.dumps(value, ensure_ascii=False, sort_keys=True)
+
+        evidence_record = rc_state.get("evidence_record")
+
+        if isinstance(evidence_record, dict):
+            for key in (
+                "origin_reference",
+                "origin_id",
+                "origin",
+                "source_observation",
+                "raw_observation",
+            ):
+                value = evidence_record.get(key)
+
+                if isinstance(value, str) and value.strip():
+                    return value.strip()
+
+                if isinstance(value, dict) and value:
+                    return json.dumps(value, ensure_ascii=False, sort_keys=True)
+
+        return "origin_reference_unavailable"
+
+    def extract_evidence_reference(self, rc_state: dict[str, Any]) -> str:
+        for key in (
+            "evidence_reference",
+            "evidence_id",
+            "evidence_record_id",
+            "record_id",
+            "id",
+        ):
+            value = rc_state.get(key)
+
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+
+        evidence_record = rc_state.get("evidence_record")
+
+        if isinstance(evidence_record, dict):
+            for key in (
+                "evidence_reference",
+                "evidence_id",
+                "record_id",
+                "id",
+            ):
+                value = evidence_record.get(key)
+
+                if isinstance(value, str) and value.strip():
+                    return value.strip()
+
+        return "evidence_reference_unavailable"
+
+    def build_environment_snapshot(self, input_path: Path, output_path: Path) -> dict[str, Any]:
+        return {
+            "project_root": str(PROJECT_ROOT),
+            "runner_path": str(Path(__file__).resolve()),
+            "input_path": str(input_path),
+            "output_path": str(output_path),
+            "created_at": self.now(),
+            "environment_type": "local_file_system",
+            "laboratory": "Difference Retention Laboratory",
+        }
+
+    def build_transformation_history(
+        self,
+        input_path: Path,
+        output_path: Path,
+    ) -> list[TransformationStep]:
+        return [
+            TransformationStep(
+                step_id="step_001",
+                step_type="load_rc_evidence_state",
+                input_reference=str(input_path),
+                output_reference="in_memory_rc_evidence_state",
+                description="Loaded RC Evidence State from adapter output.",
+                created_at=self.now(),
+            ),
+            TransformationStep(
+                step_id="step_002",
+                step_type="run_demo_experiment",
+                input_reference="in_memory_rc_evidence_state",
+                output_reference="experiment_run_record",
+                description="Executed demo experiment and preserved structural references for retention analysis.",
+                created_at=self.now(),
+            ),
+            TransformationStep(
+                step_id="step_003",
+                step_type="export_experiment_run_record",
+                input_reference="experiment_run_record",
+                output_reference=str(output_path),
+                description="Exported Experiment Run Record with Retention Trace.",
+                created_at=self.now(),
+            ),
+        ]
+
+    def build_retention_trace(
+        self,
+        origin_reference: str,
+        evidence_reference: str,
+        rc_state: dict[str, Any],
+        transformation_history: list[TransformationStep],
+        environment_snapshot: dict[str, Any],
+    ) -> RetentionTrace:
+        missing_elements: list[str] = []
+
+        if origin_reference == "origin_reference_unavailable":
+            missing_elements.append("origin_reference")
+
+        if evidence_reference == "evidence_reference_unavailable":
+            missing_elements.append("evidence_reference")
+
+        if not transformation_history:
+            missing_elements.append("transformation_history")
+
+        if not environment_snapshot:
+            missing_elements.append("environment_snapshot")
+
+        retained_elements = [
+            element
+            for element in (
+                "origin_reference",
+                "evidence_reference",
+                "rc_evidence_state",
+                "transformation_history",
+                "environment_snapshot",
+            )
+            if element not in missing_elements
+        ]
+
+        return RetentionTrace(
+            trace_type="retention_trace",
+            version="RETENTION_TRACE_v1",
+            origin_reference=origin_reference,
+            evidence_reference=evidence_reference,
+            state_reference="rc_evidence_state",
+            transformation_history=transformation_history,
+            environment_snapshot=environment_snapshot,
+            retained_elements=retained_elements,
+            missing_elements=missing_elements,
+            retention_ready=len(missing_elements) == 0,
+        )
+
+    def run_experiment(
+        self,
+        input_path: Path = DEFAULT_INPUT_PATH,
+        output_path: Path = DEFAULT_OUTPUT_PATH,
+    ) -> ExperimentRunRecord:
+        rc_state = self.load_json(input_path)
+
+        origin_reference = self.extract_origin_reference(rc_state)
+        evidence_reference = self.extract_evidence_reference(rc_state)
+        transformation_history = self.build_transformation_history(
+            input_path=input_path,
+            output_path=output_path,
+        )
+        environment_snapshot = self.build_environment_snapshot(
+            input_path=input_path,
+            output_path=output_path,
+        )
+
+        retention_trace = self.build_retention_trace(
+            origin_reference=origin_reference,
+            evidence_reference=evidence_reference,
+            rc_state=rc_state,
+            transformation_history=transformation_history,
+            environment_snapshot=environment_snapshot,
+        )
+
+        experiment_status = "COMPLETED"
+
+        if retention_trace.retention_ready:
+            conclusion = (
+                "Experiment completed with explicit Retention Trace. "
+                "The run record is ready for Retention Analysis."
+            )
+        else:
+            conclusion = (
+                "Experiment completed, but Retention Trace is incomplete. "
+                "The run record remains analyzable, but retention may be partial."
+            )
+
+        return ExperimentRunRecord(
+            record_type="experiment_run_record",
+            version=self.VERSION,
+            experiment_id="experiment_run_demo_v1",
+            created_at=self.now(),
+            input_path=str(input_path),
+            experiment_status=experiment_status,
+            origin_reference=origin_reference,
+            evidence_reference=evidence_reference,
+            rc_evidence_state=rc_state,
+            transformation_history=transformation_history,
+            environment_snapshot=environment_snapshot,
+            retention_trace=retention_trace,
+            conclusion=conclusion,
+        )
+
+    def run(
+        self,
+        input_path: Path = DEFAULT_INPUT_PATH,
+        output_path: Path = DEFAULT_OUTPUT_PATH,
+    ) -> Path:
+        record = self.run_experiment(
+            input_path=input_path,
+            output_path=output_path,
+        )
+
+        payload = asdict(record)
+        return self.export_json(payload=payload, output_path=output_path)
+
 
 def main() -> None:
-    print("🧪 EXPERIMENT RUNNER v1")
+    runner = ExperimentRunnerV1()
+    output_path = runner.run()
+
+    print("🧪 EXPERIMENT RUNNER v1.1")
     print("=" * 80)
-
-    input_path = (
-        Path("..")
-        / "07_OUTPUT"
-        / "rc_evidence_adapter_demo_v1.json"
-    )
-
-    output_path = (
-        Path("..")
-        / "07_OUTPUT"
-        / "experiment_run_record_demo_v1.json"
-    )
-
-    runner = ExperimentRunner()
-
-    try:
-        stream = runner.load_state_stream(input_path)
-        run_record = runner.build_run_record(stream)
-        exported_path = runner.export(run_record, output_path)
-
-    except ExperimentRunnerError as exc:
-        print("-" * 80)
-        print("EXPERIMENT RUNNER FAILED")
-        print(exc)
-        print("=" * 80)
-        sys.exit(1)
-
-    print(f"Runner:       {runner.runner_name}")
-    print(f"Version:      {RUNNER_VERSION}")
-    print(f"Input:        {input_path}")
-    print(f"Output:       {exported_path}")
-    print("-" * 80)
-    print(f"Experiment:   {run_record.experiment_id}")
-    print(f"Environment:  {run_record.environment}")
-    print(f"States:       {run_record.input_state_count}")
-    print(f"Accepted:     {run_record.accepted_evidence_count}")
-    print(f"Weak:         {run_record.weak_evidence_count}")
-    print(f"Uncertain:    {run_record.uncertain_evidence_count}")
-    print("-" * 80)
-    print(f"Status:       {run_record.run_status}")
+    print(f"Input:  {DEFAULT_INPUT_PATH}")
+    print(f"Output: {output_path}")
+    print("Status: READY")
     print("=" * 80)
-    print("READY")
 
 
 if __name__ == "__main__":

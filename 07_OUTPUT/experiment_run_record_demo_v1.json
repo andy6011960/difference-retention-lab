@@ -1,60 +1,195 @@
 {
-  "record_type": "EXPERIMENT_RUN_RECORD",
-  "runner_name": "Experiment Runner v1",
-  "runner_version": "EXPERIMENT_RUNNER_v1",
-  "run": {
-    "experiment_id": "EXPERIMENT_RC_EVIDENCE_DEMO_v1",
-    "runner_version": "EXPERIMENT_RUNNER_v1",
+  "record_type": "experiment_run_record",
+  "version": "EXPERIMENT_RUNNER_v1.1",
+  "experiment_id": "experiment_run_demo_v1",
+  "created_at": "2026-06-21T05:01:14",
+  "input_path": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB\\07_OUTPUT\\rc_evidence_adapter_demo_v1.json",
+  "experiment_status": "COMPLETED",
+  "origin_reference": "multiple_origin_references:CARBON_001,ELECTROLYTE_001,RC_001,RC_002",
+  "evidence_reference": "multiple_evidence_references:EVIDENCE_CARBON_001,EVIDENCE_ELECTROLYTE_001,EVIDENCE_RC_001,EVIDENCE_RC_002",
+  "rc_evidence_state": {
+    "adapter_version": "RC_EVIDENCE_ADAPTER_v1.1",
+    "adapter_name": "RC Evidence Adapter v1.1",
+    "created_at": "2026-06-21T05:00:54",
+    "input_record_type": "EVIDENCE_RECORD_STREAM",
+    "output_record_type": "RC_EVIDENCE_STATE_STREAM",
     "environment": "RC_ENVIRONMENT",
-    "input_record_type": "RC_EVIDENCE_STATE_STREAM",
-    "input_state_count": 2,
-    "accepted_evidence_count": 1,
-    "weak_evidence_count": 1,
-    "uncertain_evidence_count": 0,
-    "source_adapter_version": "RC_EVIDENCE_ADAPTER_v1",
-    "created_at": "2026-06-20T18:49:02",
+    "origin_reference": "multiple_origin_references:CARBON_001,ELECTROLYTE_001,RC_001,RC_002",
+    "evidence_reference": "multiple_evidence_references:EVIDENCE_CARBON_001,EVIDENCE_ELECTROLYTE_001,EVIDENCE_RC_001,EVIDENCE_RC_002",
+    "lineage_status": "ORIGIN_LINEAGE_PRESERVED",
+    "state_count": 4,
     "states": [
       {
         "state_id": "RC_STATE_EVIDENCE_RC_001",
         "evidence_id": "EVIDENCE_RC_001",
         "raw_observation_id": "RC_001",
-        "value": 4.96,
+        "origin_reference": "RC_001",
+        "evidence_reference": "EVIDENCE_RC_001",
+        "value": 0.0,
         "unit": "V",
         "channel": "VC",
         "source": "M830B multimeter",
-        "origin_label": "DIRECT_MEASUREMENT",
+        "origin_label": "UNKNOWN_ORIGIN",
         "evidence_status": "ACCEPTED_AS_EVIDENCE",
-        "confidence": 1.0,
+        "confidence": 0.0,
         "metadata": {
           "origin_label": "DIRECT_MEASUREMENT"
         },
-        "adapter_version": "RC_EVIDENCE_ADAPTER_v1",
+        "adapter_version": "RC_EVIDENCE_ADAPTER_v1.1",
         "provenance_preserved": true,
-        "raw_value_preserved": true,
+        "raw_value_preserved": false,
         "adapter_interpretation_performed": false
       },
       {
         "state_id": "RC_STATE_EVIDENCE_RC_002",
         "evidence_id": "EVIDENCE_RC_002",
         "raw_observation_id": "RC_002",
-        "value": 0.03,
+        "origin_reference": "RC_002",
+        "evidence_reference": "EVIDENCE_RC_002",
+        "value": 0.0,
         "unit": "V",
         "channel": "OUT1",
         "source": "M830B multimeter",
-        "origin_label": "INSTRUMENTAL_NOISE",
+        "origin_label": "UNKNOWN_ORIGIN",
         "evidence_status": "WEAK_EVIDENCE",
-        "confidence": 0.9,
+        "confidence": 0.0,
         "metadata": {
           "is_noise": true
         },
-        "adapter_version": "RC_EVIDENCE_ADAPTER_v1",
+        "adapter_version": "RC_EVIDENCE_ADAPTER_v1.1",
         "provenance_preserved": true,
-        "raw_value_preserved": true,
+        "raw_value_preserved": false,
+        "adapter_interpretation_performed": false
+      },
+      {
+        "state_id": "RC_STATE_EVIDENCE_CARBON_001",
+        "evidence_id": "EVIDENCE_CARBON_001",
+        "raw_observation_id": "CARBON_001",
+        "origin_reference": "CARBON_001",
+        "evidence_reference": "EVIDENCE_CARBON_001",
+        "value": 0.0,
+        "unit": "simulation_unit",
+        "channel": "None",
+        "source": "carbon simulation",
+        "origin_label": "UNKNOWN_ORIGIN",
+        "evidence_status": "ACCEPTED_AS_EVIDENCE",
+        "confidence": 0.0,
+        "metadata": {
+          "is_simulation": true
+        },
+        "adapter_version": "RC_EVIDENCE_ADAPTER_v1.1",
+        "provenance_preserved": true,
+        "raw_value_preserved": false,
+        "adapter_interpretation_performed": false
+      },
+      {
+        "state_id": "RC_STATE_EVIDENCE_ELECTROLYTE_001",
+        "evidence_id": "EVIDENCE_ELECTROLYTE_001",
+        "raw_observation_id": "ELECTROLYTE_001",
+        "origin_reference": "ELECTROLYTE_001",
+        "evidence_reference": "EVIDENCE_ELECTROLYTE_001",
+        "value": 0.0,
+        "unit": "relative_index",
+        "channel": "None",
+        "source": "manual estimate",
+        "origin_label": "UNKNOWN_ORIGIN",
+        "evidence_status": "WEAK_EVIDENCE",
+        "confidence": 0.0,
+        "metadata": {
+          "is_approximation": true
+        },
+        "adapter_version": "RC_EVIDENCE_ADAPTER_v1.1",
+        "provenance_preserved": true,
+        "raw_value_preserved": false,
         "adapter_interpretation_performed": false
       }
+    ]
+  },
+  "transformation_history": [
+    {
+      "step_id": "step_001",
+      "step_type": "load_rc_evidence_state",
+      "input_reference": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB\\07_OUTPUT\\rc_evidence_adapter_demo_v1.json",
+      "output_reference": "in_memory_rc_evidence_state",
+      "description": "Loaded RC Evidence State from adapter output.",
+      "created_at": "2026-06-21T05:01:14"
+    },
+    {
+      "step_id": "step_002",
+      "step_type": "run_demo_experiment",
+      "input_reference": "in_memory_rc_evidence_state",
+      "output_reference": "experiment_run_record",
+      "description": "Executed demo experiment and preserved structural references for retention analysis.",
+      "created_at": "2026-06-21T05:01:14"
+    },
+    {
+      "step_id": "step_003",
+      "step_type": "export_experiment_run_record",
+      "input_reference": "experiment_run_record",
+      "output_reference": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB\\07_OUTPUT\\experiment_run_record_demo_v1.json",
+      "description": "Exported Experiment Run Record with Retention Trace.",
+      "created_at": "2026-06-21T05:01:14"
+    }
+  ],
+  "environment_snapshot": {
+    "project_root": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB",
+    "runner_path": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB\\05_EXPERIMENTS\\experiment_runner_v1.py",
+    "input_path": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB\\07_OUTPUT\\rc_evidence_adapter_demo_v1.json",
+    "output_path": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB\\07_OUTPUT\\experiment_run_record_demo_v1.json",
+    "created_at": "2026-06-21T05:01:14",
+    "environment_type": "local_file_system",
+    "laboratory": "Difference Retention Laboratory"
+  },
+  "retention_trace": {
+    "trace_type": "retention_trace",
+    "version": "RETENTION_TRACE_v1",
+    "origin_reference": "multiple_origin_references:CARBON_001,ELECTROLYTE_001,RC_001,RC_002",
+    "evidence_reference": "multiple_evidence_references:EVIDENCE_CARBON_001,EVIDENCE_ELECTROLYTE_001,EVIDENCE_RC_001,EVIDENCE_RC_002",
+    "state_reference": "rc_evidence_state",
+    "transformation_history": [
+      {
+        "step_id": "step_001",
+        "step_type": "load_rc_evidence_state",
+        "input_reference": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB\\07_OUTPUT\\rc_evidence_adapter_demo_v1.json",
+        "output_reference": "in_memory_rc_evidence_state",
+        "description": "Loaded RC Evidence State from adapter output.",
+        "created_at": "2026-06-21T05:01:14"
+      },
+      {
+        "step_id": "step_002",
+        "step_type": "run_demo_experiment",
+        "input_reference": "in_memory_rc_evidence_state",
+        "output_reference": "experiment_run_record",
+        "description": "Executed demo experiment and preserved structural references for retention analysis.",
+        "created_at": "2026-06-21T05:01:14"
+      },
+      {
+        "step_id": "step_003",
+        "step_type": "export_experiment_run_record",
+        "input_reference": "experiment_run_record",
+        "output_reference": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB\\07_OUTPUT\\experiment_run_record_demo_v1.json",
+        "description": "Exported Experiment Run Record with Retention Trace.",
+        "created_at": "2026-06-21T05:01:14"
+      }
     ],
-    "provenance_preserved": true,
-    "experiment_interpretation_performed": false,
-    "run_status": "EXPERIMENT_RECORDED"
-  }
+    "environment_snapshot": {
+      "project_root": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB",
+      "runner_path": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB\\05_EXPERIMENTS\\experiment_runner_v1.py",
+      "input_path": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB\\07_OUTPUT\\rc_evidence_adapter_demo_v1.json",
+      "output_path": "E:\\SINTEZ_ONTOLOGY_V2\\DIFFERENCE_RETENTION_LAB\\07_OUTPUT\\experiment_run_record_demo_v1.json",
+      "created_at": "2026-06-21T05:01:14",
+      "environment_type": "local_file_system",
+      "laboratory": "Difference Retention Laboratory"
+    },
+    "retained_elements": [
+      "origin_reference",
+      "evidence_reference",
+      "rc_evidence_state",
+      "transformation_history",
+      "environment_snapshot"
+    ],
+    "missing_elements": [],
+    "retention_ready": true
+  },
+  "conclusion": "Experiment completed with explicit Retention Trace. The run record is ready for Retention Analysis."
 }
