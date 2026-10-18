@@ -1,0 +1,58 @@
+{
+  "event": "EVENT_OPXRD_LBNL_PATTERN_0_0",
+  "origin": "Real open experimental pXRD data from opXRD dataset, source file: E:\\SINTEZ_ONTOLOGY_V2\\ODF_CORE_v0_1\\opxrd\\LBNL\\LBNL-A\\pattern_group_0_0.json",
+  "tension": "TENSION_CRYSTAL_STRUCTURE_OBSERVATION_001",
+  "signals": [
+    "SIGNAL_XRD_PATTERN_001"
+  ],
+  "invariants": [
+    "INVARIANT_DATASET_001",
+    "INVARIANT_INSTITUTION_001"
+  ],
+  "ruptures": [
+    "RUPTURE_MAX_INTENSITY_PEAK_001"
+  ],
+  "interpretation": "interpretation_pending",
+  "edges": [
+    {
+      "from": "EVENT_OPXRD_LBNL_PATTERN_0_0",
+      "to": "TENSION_CRYSTAL_STRUCTURE_OBSERVATION_001",
+      "type": "has_tension"
+    },
+    {
+      "from": "EVENT_OPXRD_LBNL_PATTERN_0_0",
+      "to": "SIGNAL_XRD_PATTERN_001",
+      "type": "produces_signal"
+    },
+    {
+      "from": "EVENT_OPXRD_LBNL_PATTERN_0_0",
+      "to": "INVARIANT_DATASET_001",
+      "type": "preserves_invariant"
+    },
+    {
+      "from": "EVENT_OPXRD_LBNL_PATTERN_0_0",
+      "to": "INVARIANT_INSTITUTION_001",
+      "type": "preserves_invariant"
+    },
+    {
+      "from": "EVENT_OPXRD_LBNL_PATTERN_0_0",
+      "to": "RUPTURE_MAX_INTENSITY_PEAK_001",
+      "type": "contains_rupture"
+    },
+    {
+      "from": "RUPTURE_MAX_INTENSITY_PEAK_001",
+      "to": "SIGNAL_XRD_PATTERN_001",
+      "type": "observed_in_signal"
+    },
+    {
+      "from": "EVENT_OPXRD_LBNL_PATTERN_0_0",
+      "to": "interpretation_pending",
+      "type": "has_interpretation"
+    },
+    {
+      "from": "interpretation_pending",
+      "to": "RUPTURE_MAX_INTENSITY_PEAK_001",
+      "type": "explains_rupture"
+    }
+  ]
+}

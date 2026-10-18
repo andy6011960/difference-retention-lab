@@ -1,0 +1,52 @@
+{
+  "event": "EVENT_ZENODO_CDO_001",
+  "origin": "Real open experimental data from Zenodo (record 18522088), file: zenodo_cdo.xy",
+  "tension": "TENSION_CRYSTAL_STRUCTURE_OBSERVATION_002",
+  "signals": [
+    "SIGNAL_XRD_CDO_001"
+  ],
+  "invariants": [
+    "INVARIANT_FORMAT_001"
+  ],
+  "ruptures": [
+    "RUPTURE_MAX_PEAK_001"
+  ],
+  "interpretation": "interpretation_pending",
+  "edges": [
+    {
+      "from": "EVENT_ZENODO_CDO_001",
+      "to": "TENSION_CRYSTAL_STRUCTURE_OBSERVATION_002",
+      "type": "has_tension"
+    },
+    {
+      "from": "EVENT_ZENODO_CDO_001",
+      "to": "SIGNAL_XRD_CDO_001",
+      "type": "produces_signal"
+    },
+    {
+      "from": "EVENT_ZENODO_CDO_001",
+      "to": "INVARIANT_FORMAT_001",
+      "type": "preserves_invariant"
+    },
+    {
+      "from": "EVENT_ZENODO_CDO_001",
+      "to": "RUPTURE_MAX_PEAK_001",
+      "type": "contains_rupture"
+    },
+    {
+      "from": "RUPTURE_MAX_PEAK_001",
+      "to": "SIGNAL_XRD_CDO_001",
+      "type": "observed_in_signal"
+    },
+    {
+      "from": "EVENT_ZENODO_CDO_001",
+      "to": "interpretation_pending",
+      "type": "has_interpretation"
+    },
+    {
+      "from": "interpretation_pending",
+      "to": "RUPTURE_MAX_PEAK_001",
+      "type": "explains_rupture"
+    }
+  ]
+}

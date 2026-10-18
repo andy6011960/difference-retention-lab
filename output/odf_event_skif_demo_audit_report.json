@@ -1,0 +1,14 @@
+{
+  "event_id": "EVENT_SKIF_EXPLOSION_001",
+  "status": "PASS",
+  "issues": [],
+  "warnings": [],
+  "counts": {
+    "signals": 4,
+    "invariants": 4,
+    "ruptures": 2,
+    "has_tension": true,
+    "has_interpretation": true
+  },
+  "principle": "Loss of origin produces loss of interpretability."
+}

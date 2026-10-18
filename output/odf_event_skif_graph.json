@@ -1,0 +1,124 @@
+{
+  "event": "EVENT_SKIF_EXPLOSION_001",
+  "origin": "SKIF explosion chamber: experimental observation of a metal sample under shock loading.",
+  "tension": "TENSION_SHOCK_STRUCTURAL_FAILURE_001",
+  "signals": [
+    "SIGNAL_XRAY_001",
+    "SIGNAL_VIDEO_001",
+    "SIGNAL_PRESSURE_001",
+    "SIGNAL_STRAIN_001"
+  ],
+  "invariants": [
+    "INVARIANT_SAMPLE_001",
+    "INVARIANT_FACILITY_001",
+    "INVARIANT_SERIES_001",
+    "INVARIANT_TIMEBASE_001"
+  ],
+  "ruptures": [
+    "RUPTURE_LOCAL_DAMAGE_001",
+    "RUPTURE_CONNECTIVITY_LOSS_001"
+  ],
+  "interpretation": "shock_induced_structural_transition",
+  "edges": [
+    {
+      "from": "EVENT_SKIF_EXPLOSION_001",
+      "to": "TENSION_SHOCK_STRUCTURAL_FAILURE_001",
+      "type": "has_tension"
+    },
+    {
+      "from": "EVENT_SKIF_EXPLOSION_001",
+      "to": "SIGNAL_XRAY_001",
+      "type": "produces_signal"
+    },
+    {
+      "from": "EVENT_SKIF_EXPLOSION_001",
+      "to": "SIGNAL_VIDEO_001",
+      "type": "produces_signal"
+    },
+    {
+      "from": "EVENT_SKIF_EXPLOSION_001",
+      "to": "SIGNAL_PRESSURE_001",
+      "type": "produces_signal"
+    },
+    {
+      "from": "EVENT_SKIF_EXPLOSION_001",
+      "to": "SIGNAL_STRAIN_001",
+      "type": "produces_signal"
+    },
+    {
+      "from": "EVENT_SKIF_EXPLOSION_001",
+      "to": "INVARIANT_SAMPLE_001",
+      "type": "preserves_invariant"
+    },
+    {
+      "from": "EVENT_SKIF_EXPLOSION_001",
+      "to": "INVARIANT_FACILITY_001",
+      "type": "preserves_invariant"
+    },
+    {
+      "from": "EVENT_SKIF_EXPLOSION_001",
+      "to": "INVARIANT_SERIES_001",
+      "type": "preserves_invariant"
+    },
+    {
+      "from": "EVENT_SKIF_EXPLOSION_001",
+      "to": "INVARIANT_TIMEBASE_001",
+      "type": "preserves_invariant"
+    },
+    {
+      "from": "EVENT_SKIF_EXPLOSION_001",
+      "to": "RUPTURE_LOCAL_DAMAGE_001",
+      "type": "contains_rupture"
+    },
+    {
+      "from": "RUPTURE_LOCAL_DAMAGE_001",
+      "to": "SIGNAL_XRAY_001",
+      "type": "observed_in_signal"
+    },
+    {
+      "from": "RUPTURE_LOCAL_DAMAGE_001",
+      "to": "SIGNAL_VIDEO_001",
+      "type": "observed_in_signal"
+    },
+    {
+      "from": "RUPTURE_LOCAL_DAMAGE_001",
+      "to": "SIGNAL_STRAIN_001",
+      "type": "observed_in_signal"
+    },
+    {
+      "from": "EVENT_SKIF_EXPLOSION_001",
+      "to": "RUPTURE_CONNECTIVITY_LOSS_001",
+      "type": "contains_rupture"
+    },
+    {
+      "from": "RUPTURE_CONNECTIVITY_LOSS_001",
+      "to": "SIGNAL_XRAY_001",
+      "type": "observed_in_signal"
+    },
+    {
+      "from": "RUPTURE_CONNECTIVITY_LOSS_001",
+      "to": "SIGNAL_PRESSURE_001",
+      "type": "observed_in_signal"
+    },
+    {
+      "from": "RUPTURE_CONNECTIVITY_LOSS_001",
+      "to": "SIGNAL_STRAIN_001",
+      "type": "observed_in_signal"
+    },
+    {
+      "from": "EVENT_SKIF_EXPLOSION_001",
+      "to": "shock_induced_structural_transition",
+      "type": "has_interpretation"
+    },
+    {
+      "from": "shock_induced_structural_transition",
+      "to": "RUPTURE_LOCAL_DAMAGE_001",
+      "type": "explains_rupture"
+    },
+    {
+      "from": "shock_induced_structural_transition",
+      "to": "RUPTURE_CONNECTIVITY_LOSS_001",
+      "type": "explains_rupture"
+    }
+  ]
+}

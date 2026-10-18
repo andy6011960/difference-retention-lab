@@ -1,0 +1,51 @@
+{
+  "event_id": "EVENT_ZENODO_CDO_001",
+  "title": "CdO XRD pattern from Zenodo",
+  "origin": "Real open experimental data from Zenodo (record 18522088), file: zenodo_cdo.xy",
+  "tension": {
+    "tension_id": "TENSION_CRYSTAL_STRUCTURE_OBSERVATION_002",
+    "description": "Internal crystal structure observed via X-ray diffraction.",
+    "observed_change": "Intensity variation over two-theta axis.",
+    "research_question": "What structure produced this diffraction pattern?"
+  },
+  "description": "ODF validation case using a plain .xy text format XRD dataset.",
+  "created_at": "2026-10-18T16:08:48",
+  "signals": [
+    {
+      "signal_id": "SIGNAL_XRD_CDO_001",
+      "signal_type": "experimental_xrd_xy_format",
+      "description": "XRD signal with 4013 points in .xy format.",
+      "source": "Zenodo",
+      "time_range": null,
+      "file_ref": "E:\\SINTEZ_ONTOLOGY_V2\\ODF_CORE_v0_1\\data_zenodo\\zenodo_cdo.xy"
+    }
+  ],
+  "invariants": [
+    {
+      "invariant_id": "INVARIANT_FORMAT_001",
+      "name": "file_format",
+      "value": ".xy",
+      "description": "Plain text two-column format."
+    }
+  ],
+  "ruptures": [
+    {
+      "rupture_id": "RUPTURE_MAX_PEAK_001",
+      "time_mark": "two_theta=32.78619",
+      "description": "Maximum intensity peak detected at 3163.0.",
+      "linked_signals": [
+        "SIGNAL_XRD_CDO_001"
+      ],
+      "confidence": 1.0
+    }
+  ],
+  "interpretation": {
+    "model_name": "interpretation_pending",
+    "description": "Phase interpretation pending. ODF preserves the signal and peak feature.",
+    "confidence": null,
+    "linked_ruptures": [
+      "RUPTURE_MAX_PEAK_001"
+    ]
+  },
+  "notes": []
+}

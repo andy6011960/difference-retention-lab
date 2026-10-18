@@ -1,0 +1,14 @@
+{
+  "event_id": "EVENT_ZENODO_CDO_001",
+  "status": "PASS",
+  "issues": [],
+  "warnings": [],
+  "counts": {
+    "signals": 1,
+    "invariants": 1,
+    "ruptures": 1,
+    "has_tension": true,
+    "has_interpretation": true
+  },
+  "principle": "Loss of origin produces loss of interpretability."
+}

@@ -1,0 +1,110 @@
+{
+  "event_id": "EVENT_SKIF_EXPLOSION_001",
+  "title": "SKIF explosion chamber process observation demo",
+  "origin": "SKIF explosion chamber: experimental observation of a metal sample under shock loading.",
+  "tension": {
+    "tension_id": "TENSION_SHOCK_STRUCTURAL_FAILURE_001",
+    "description": "Shock loading of a metallic sample and subsequent structural degradation.",
+    "observed_change": "Growth of internal stress followed by local rupture and loss of structural connectivity.",
+    "research_question": "At what moment does the sample transition from reversible deformation to irreversible structural damage?"
+  },
+  "description": "Demo ODF event for illustrating how multiple experimental data streams can be connected to one observed process rather than stored as isolated files.",
+  "created_at": "2026-06-09T20:54:42",
+  "signals": [
+    {
+      "signal_id": "SIGNAL_XRAY_001",
+      "signal_type": "xray_series",
+      "description": "Time-resolved X-ray image sequence of the sample during shock loading.",
+      "source": "synchrotron_xray_diagnostics",
+      "time_range": "0.00-25.00 microseconds",
+      "file_ref": "experiment_001/xray/xray_series_001.dat"
+    },
+    {
+      "signal_id": "SIGNAL_VIDEO_001",
+      "signal_type": "high_speed_video",
+      "description": "High-speed optical video of external deformation and visible fracture development.",
+      "source": "high_speed_camera",
+      "time_range": "0.00-25.00 microseconds",
+      "file_ref": "experiment_001/video/high_speed_video_001.mp4"
+    },
+    {
+      "signal_id": "SIGNAL_PRESSURE_001",
+      "signal_type": "pressure_sensor",
+      "description": "Pressure profile of the shock wave during the experiment.",
+      "source": "pressure_sensor_array",
+      "time_range": "0.00-25.00 microseconds",
+      "file_ref": "experiment_001/pressure/pressure_profile_001.csv"
+    },
+    {
+      "signal_id": "SIGNAL_STRAIN_001",
+      "signal_type": "strain_sensor",
+      "description": "Local strain measurements from the sample surface and fixture points.",
+      "source": "strain_sensor_array",
+      "time_range": "0.00-25.00 microseconds",
+      "file_ref": "experiment_001/strain/strain_profile_001.csv"
+    }
+  ],
+  "invariants": [
+    {
+      "invariant_id": "INVARIANT_SAMPLE_001",
+      "name": "sample",
+      "value": "Ti-6Al-4V",
+      "description": "Material sample identity preserved across all data streams."
+    },
+    {
+      "invariant_id": "INVARIANT_FACILITY_001",
+      "name": "facility",
+      "value": "SKIF",
+      "description": "Experimental facility where the event is observed."
+    },
+    {
+      "invariant_id": "INVARIANT_SERIES_001",
+      "name": "experiment_series",
+      "value": "EXP-2026-A",
+      "description": "Experimental series identifier linking related tests."
+    },
+    {
+      "invariant_id": "INVARIANT_TIMEBASE_001",
+      "name": "shared_timebase",
+      "value": "microsecond synchronized timeline",
+      "description": "Common temporal frame used to connect signals from different instruments."
+    }
+  ],
+  "ruptures": [
+    {
+      "rupture_id": "RUPTURE_LOCAL_DAMAGE_001",
+      "time_mark": "12.37 microseconds",
+      "description": "First visible local damage zone appears in the sample structure.",
+      "linked_signals": [
+        "SIGNAL_XRAY_001",
+        "SIGNAL_VIDEO_001",
+        "SIGNAL_STRAIN_001"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "rupture_id": "RUPTURE_CONNECTIVITY_LOSS_001",
+      "time_mark": "18.41 microseconds",
+      "description": "Loss of structural connectivity becomes observable across multiple signals.",
+      "linked_signals": [
+        "SIGNAL_XRAY_001",
+        "SIGNAL_PRESSURE_001",
+        "SIGNAL_STRAIN_001"
+      ],
+      "confidence": 0.91
+    }
+  ],
+  "interpretation": {
+    "model_name": "shock_induced_structural_transition",
+    "description": "The event is interpreted as a shock-induced structural transition: a process in which accumulated internal stress produces local damage, followed by loss of connectivity in the material structure.",
+    "confidence": 0.91,
+    "linked_ruptures": [
+      "RUPTURE_LOCAL_DAMAGE_001",
+      "RUPTURE_CONNECTIVITY_LOSS_001"
+    ]
+  },
+  "notes": [
+    "ODF demo principle: the experiment is represented as one process event, not as a folder of disconnected files.",
+    "Each signal preserves its origin through EVENT_SKIF_EXPLOSION_001 and remains linked to tension, invariants and ruptures."
+  ]
+}

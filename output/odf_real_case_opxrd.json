@@ -1,0 +1,57 @@
+{
+  "event_id": "EVENT_OPXRD_LBNL_PATTERN_0_0",
+  "title": "opXRD real experimental powder XRD pattern",
+  "origin": "Real open experimental pXRD data from opXRD dataset, source file: E:\\SINTEZ_ONTOLOGY_V2\\ODF_CORE_v0_1\\opxrd\\LBNL\\LBNL-A\\pattern_group_0_0.json",
+  "tension": {
+    "tension_id": "TENSION_CRYSTAL_STRUCTURE_OBSERVATION_001",
+    "description": "The internal structure of a material is observed indirectly through the distribution of diffraction intensities.",
+    "observed_change": "Variation of intensity over the two-theta axis, including peaks, background changes and possible structural signatures.",
+    "research_question": "What material structure or phase configuration produced the observed experimental diffraction pattern?"
+  },
+  "description": "ODF real-world validation case based on an open experimental powder X-ray diffraction pattern.",
+  "created_at": "2026-10-18T16:06:23",
+  "signals": [
+    {
+      "signal_id": "SIGNAL_XRD_PATTERN_001",
+      "signal_type": "experimental_powder_xrd_pattern",
+      "description": "Real pXRD signal with 459 two-theta values and 459 intensity values.",
+      "source": "opXRD / LBNL",
+      "time_range": null,
+      "file_ref": "E:\\SINTEZ_ONTOLOGY_V2\\ODF_CORE_v0_1\\opxrd\\LBNL\\LBNL-A\\pattern_group_0_0.json"
+    }
+  ],
+  "invariants": [
+    {
+      "invariant_id": "INVARIANT_DATASET_001",
+      "name": "dataset",
+      "value": "opXRD",
+      "description": null
+    },
+    {
+      "invariant_id": "INVARIANT_INSTITUTION_001",
+      "name": "institution",
+      "value": "Molecular Foundry Division, Lawrence Berkeley National Laboratory, Berkeley, California 94710, United States, and Sutter-Fella group",
+      "description": null
+    }
+  ],
+  "ruptures": [
+    {
+      "rupture_id": "RUPTURE_MAX_INTENSITY_PEAK_001",
+      "time_mark": "two_theta=29.02024247646219",
+      "description": "Maximum intensity point detected in the real experimental XRD signal.",
+      "linked_signals": [
+        "SIGNAL_XRD_PATTERN_001"
+      ],
+      "confidence": 1.0
+    }
+  ],
+  "interpretation": {
+    "model_name": "interpretation_pending",
+    "description": "Phase interpretation state based on the original label.",
+    "confidence": null,
+    "linked_ruptures": [
+      "RUPTURE_MAX_INTENSITY_PEAK_001"
+    ]
+  },
+  "notes": []
+}
