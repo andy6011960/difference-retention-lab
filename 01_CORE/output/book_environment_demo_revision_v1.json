@@ -1,0 +1,1361 @@
+{
+  "book_id": "DEMO_BOOK_ENVIRONMENT_v1_2",
+  "title": "Demo Book Environment",
+  "exported_at": "2026-06-20T17:15:54",
+  "invariant": {
+    "name": "DELTA_RETENTION_INVARIANT",
+    "threshold": 0.05
+  },
+  "pages": {
+    "PAGE_POSITIVE_DECAY": {
+      "page_id": "PAGE_POSITIVE_DECAY",
+      "title": "Positive Decay Page",
+      "description": "Demo page with monotonic delta decay.",
+      "parameters": {}
+    },
+    "PAGE_INVERSE": {
+      "page_id": "PAGE_INVERSE",
+      "title": "Inverse Orientation Page",
+      "description": "Demo page that flips orientation during local dynamics.",
+      "parameters": {}
+    }
+  },
+  "spines": [
+    {
+      "spine_id": "SPINE_LOW_DELTA_TURN",
+      "from_page": "PAGE_POSITIVE_DECAY",
+      "to_page": "PAGE_INVERSE",
+      "description": "Turn page when |delta| becomes too low."
+    },
+    {
+      "spine_id": "SPINE_RETURN_AFTER_INVERSION",
+      "from_page": "PAGE_INVERSE",
+      "to_page": "PAGE_POSITIVE_DECAY",
+      "description": "Return page after inversion when |delta| becomes too low."
+    }
+  ],
+  "final_state": {
+    "step_index": 30,
+    "time": 30.0,
+    "dt": 1.0,
+    "page_id": "PAGE_INVERSE",
+    "previous_page_id": "PAGE_POSITIVE_DECAY",
+    "alive": true,
+    "delta": -0.4272544393989964,
+    "previous_delta": 0.23736357744388686,
+    "orientation": -1,
+    "previous_orientation": 1,
+    "tau_i": 30.0,
+    "transition_count": 7,
+    "orientation_switch_count": 21,
+    "book_age": 30.0,
+    "page_age": 1.0,
+    "metadata": {
+      "decay": 0.82,
+      "inverse_decay": 0.88,
+      "turn_threshold": 0.25,
+      "turn_boost": 1.8
+    }
+  },
+  "observer": {
+    "snapshots_count": 30,
+    "snapshots": [
+      {
+        "step_index": 0,
+        "time": 0.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "",
+        "alive": true,
+        "delta": 0.82,
+        "previous_delta": 1.0,
+        "orientation": 1,
+        "previous_orientation": 1,
+        "tau_i": 1.0,
+        "transition_count": 0,
+        "orientation_switch_count": 0,
+        "book_age": 0.0,
+        "page_age": 0.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.82,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 1,
+        "time": 1.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "",
+        "alive": true,
+        "delta": 0.6723999999999999,
+        "previous_delta": 0.82,
+        "orientation": 1,
+        "previous_orientation": 1,
+        "tau_i": 2.0,
+        "transition_count": 0,
+        "orientation_switch_count": 0,
+        "book_age": 1.0,
+        "page_age": 1.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.6723999999999999,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 2,
+        "time": 2.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "",
+        "alive": true,
+        "delta": 0.5513679999999999,
+        "previous_delta": 0.6723999999999999,
+        "orientation": 1,
+        "previous_orientation": 1,
+        "tau_i": 3.0,
+        "transition_count": 0,
+        "orientation_switch_count": 0,
+        "book_age": 2.0,
+        "page_age": 2.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.5513679999999999,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 3,
+        "time": 3.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "",
+        "alive": true,
+        "delta": 0.4521217599999999,
+        "previous_delta": 0.5513679999999999,
+        "orientation": 1,
+        "previous_orientation": 1,
+        "tau_i": 4.0,
+        "transition_count": 0,
+        "orientation_switch_count": 0,
+        "book_age": 3.0,
+        "page_age": 3.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.4521217599999999,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 4,
+        "time": 4.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "",
+        "alive": true,
+        "delta": 0.37073984319999986,
+        "previous_delta": 0.4521217599999999,
+        "orientation": 1,
+        "previous_orientation": 1,
+        "tau_i": 5.0,
+        "transition_count": 0,
+        "orientation_switch_count": 0,
+        "book_age": 4.0,
+        "page_age": 4.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.37073984319999986,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 5,
+        "time": 5.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "",
+        "alive": true,
+        "delta": 0.3040066714239999,
+        "previous_delta": 0.37073984319999986,
+        "orientation": 1,
+        "previous_orientation": 1,
+        "tau_i": 6.0,
+        "transition_count": 0,
+        "orientation_switch_count": 0,
+        "book_age": 5.0,
+        "page_age": 5.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.3040066714239999,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 6,
+        "time": 6.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": -0.4487138470218239,
+        "previous_delta": 0.2492854705676799,
+        "orientation": -1,
+        "previous_orientation": 1,
+        "tau_i": 7.0,
+        "transition_count": 1,
+        "orientation_switch_count": 1,
+        "book_age": 6.0,
+        "page_age": 0.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.4487138470218239,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 7,
+        "time": 7.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": 0.39486818537920504,
+        "previous_delta": -0.4487138470218239,
+        "orientation": 1,
+        "previous_orientation": -1,
+        "tau_i": 8.0,
+        "transition_count": 1,
+        "orientation_switch_count": 2,
+        "book_age": 7.0,
+        "page_age": 1.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.39486818537920504,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 8,
+        "time": 8.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": -0.3474840031337004,
+        "previous_delta": 0.39486818537920504,
+        "orientation": -1,
+        "previous_orientation": 1,
+        "tau_i": 9.0,
+        "transition_count": 1,
+        "orientation_switch_count": 3,
+        "book_age": 8.0,
+        "page_age": 2.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.3474840031337004,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 9,
+        "time": 9.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": 0.30578592275765637,
+        "previous_delta": -0.3474840031337004,
+        "orientation": 1,
+        "previous_orientation": -1,
+        "tau_i": 10.0,
+        "transition_count": 1,
+        "orientation_switch_count": 4,
+        "book_age": 9.0,
+        "page_age": 3.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.30578592275765637,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 10,
+        "time": 10.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": -0.2690916120267376,
+        "previous_delta": 0.30578592275765637,
+        "orientation": -1,
+        "previous_orientation": 1,
+        "tau_i": 11.0,
+        "transition_count": 1,
+        "orientation_switch_count": 5,
+        "book_age": 10.0,
+        "page_age": 4.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.2690916120267376,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 11,
+        "time": 11.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "PAGE_INVERSE",
+        "alive": true,
+        "delta": -0.42624111345035237,
+        "previous_delta": 0.23680061858352908,
+        "orientation": -1,
+        "previous_orientation": 1,
+        "tau_i": 12.0,
+        "transition_count": 2,
+        "orientation_switch_count": 7,
+        "book_age": 11.0,
+        "page_age": 0.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.42624111345035237,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 12,
+        "time": 12.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "PAGE_INVERSE",
+        "alive": true,
+        "delta": -0.3495177130292889,
+        "previous_delta": -0.42624111345035237,
+        "orientation": -1,
+        "previous_orientation": -1,
+        "tau_i": 13.0,
+        "transition_count": 2,
+        "orientation_switch_count": 7,
+        "book_age": 12.0,
+        "page_age": 1.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.3495177130292889,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 13,
+        "time": 13.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "PAGE_INVERSE",
+        "alive": true,
+        "delta": -0.28660452468401687,
+        "previous_delta": -0.3495177130292889,
+        "orientation": -1,
+        "previous_orientation": -1,
+        "tau_i": 14.0,
+        "transition_count": 2,
+        "orientation_switch_count": 7,
+        "book_age": 13.0,
+        "page_age": 2.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.28660452468401687,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 14,
+        "time": 14.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": 0.4230282784336089,
+        "previous_delta": -0.23501571024089382,
+        "orientation": 1,
+        "previous_orientation": -1,
+        "tau_i": 15.0,
+        "transition_count": 3,
+        "orientation_switch_count": 8,
+        "book_age": 14.0,
+        "page_age": 0.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.4230282784336089,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 15,
+        "time": 15.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": -0.37226488502157584,
+        "previous_delta": 0.4230282784336089,
+        "orientation": -1,
+        "previous_orientation": 1,
+        "tau_i": 16.0,
+        "transition_count": 3,
+        "orientation_switch_count": 9,
+        "book_age": 15.0,
+        "page_age": 1.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.37226488502157584,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 16,
+        "time": 16.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": 0.32759309881898674,
+        "previous_delta": -0.37226488502157584,
+        "orientation": 1,
+        "previous_orientation": -1,
+        "tau_i": 17.0,
+        "transition_count": 3,
+        "orientation_switch_count": 10,
+        "book_age": 16.0,
+        "page_age": 2.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.32759309881898674,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 17,
+        "time": 17.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": -0.2882819269607083,
+        "previous_delta": 0.32759309881898674,
+        "orientation": -1,
+        "previous_orientation": 1,
+        "tau_i": 18.0,
+        "transition_count": 3,
+        "orientation_switch_count": 11,
+        "book_age": 17.0,
+        "page_age": 3.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.2882819269607083,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 18,
+        "time": 18.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": 0.25368809572542333,
+        "previous_delta": -0.2882819269607083,
+        "orientation": 1,
+        "previous_orientation": -1,
+        "tau_i": 19.0,
+        "transition_count": 3,
+        "orientation_switch_count": 12,
+        "book_age": 18.0,
+        "page_age": 4.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.25368809572542333,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 19,
+        "time": 19.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "PAGE_INVERSE",
+        "alive": true,
+        "delta": 0.4018419436290706,
+        "previous_delta": -0.22324552423837254,
+        "orientation": 1,
+        "previous_orientation": -1,
+        "tau_i": 20.0,
+        "transition_count": 4,
+        "orientation_switch_count": 14,
+        "book_age": 19.0,
+        "page_age": 0.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.4018419436290706,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 20,
+        "time": 20.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "PAGE_INVERSE",
+        "alive": true,
+        "delta": 0.3295103937758379,
+        "previous_delta": 0.4018419436290706,
+        "orientation": 1,
+        "previous_orientation": 1,
+        "tau_i": 21.0,
+        "transition_count": 4,
+        "orientation_switch_count": 14,
+        "book_age": 20.0,
+        "page_age": 1.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.3295103937758379,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 21,
+        "time": 21.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "PAGE_INVERSE",
+        "alive": true,
+        "delta": 0.27019852289618707,
+        "previous_delta": 0.3295103937758379,
+        "orientation": 1,
+        "previous_orientation": 1,
+        "tau_i": 22.0,
+        "transition_count": 4,
+        "orientation_switch_count": 14,
+        "book_age": 21.0,
+        "page_age": 2.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.27019852289618707,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 22,
+        "time": 22.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": -0.3988130197947721,
+        "previous_delta": 0.22156278877487337,
+        "orientation": -1,
+        "previous_orientation": 1,
+        "tau_i": 23.0,
+        "transition_count": 5,
+        "orientation_switch_count": 15,
+        "book_age": 22.0,
+        "page_age": 0.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.3988130197947721,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 23,
+        "time": 23.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": 0.35095545741939943,
+        "previous_delta": -0.3988130197947721,
+        "orientation": 1,
+        "previous_orientation": -1,
+        "tau_i": 24.0,
+        "transition_count": 5,
+        "orientation_switch_count": 16,
+        "book_age": 23.0,
+        "page_age": 1.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.35095545741939943,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 24,
+        "time": 24.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": -0.3088408025290715,
+        "previous_delta": 0.35095545741939943,
+        "orientation": -1,
+        "previous_orientation": 1,
+        "tau_i": 25.0,
+        "transition_count": 5,
+        "orientation_switch_count": 17,
+        "book_age": 24.0,
+        "page_age": 2.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.3088408025290715,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 25,
+        "time": 25.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": 0.2717799062255829,
+        "previous_delta": -0.3088408025290715,
+        "orientation": 1,
+        "previous_orientation": -1,
+        "tau_i": 26.0,
+        "transition_count": 5,
+        "orientation_switch_count": 18,
+        "book_age": 25.0,
+        "page_age": 3.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.2717799062255829,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 26,
+        "time": 26.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "PAGE_INVERSE",
+        "alive": true,
+        "delta": 0.4304993714613233,
+        "previous_delta": -0.23916631747851294,
+        "orientation": 1,
+        "previous_orientation": -1,
+        "tau_i": 27.0,
+        "transition_count": 6,
+        "orientation_switch_count": 20,
+        "book_age": 26.0,
+        "page_age": 0.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.4304993714613233,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 27,
+        "time": 27.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "PAGE_INVERSE",
+        "alive": true,
+        "delta": 0.3530094845982851,
+        "previous_delta": 0.4304993714613233,
+        "orientation": 1,
+        "previous_orientation": 1,
+        "tau_i": 28.0,
+        "transition_count": 6,
+        "orientation_switch_count": 20,
+        "book_age": 27.0,
+        "page_age": 1.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.3530094845982851,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 28,
+        "time": 28.0,
+        "dt": 1.0,
+        "page_id": "PAGE_POSITIVE_DECAY",
+        "previous_page_id": "PAGE_INVERSE",
+        "alive": true,
+        "delta": 0.28946777737059376,
+        "previous_delta": 0.3530094845982851,
+        "orientation": 1,
+        "previous_orientation": 1,
+        "tau_i": 29.0,
+        "transition_count": 6,
+        "orientation_switch_count": 20,
+        "book_age": 28.0,
+        "page_age": 2.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.28946777737059376,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      },
+      {
+        "step_index": 29,
+        "time": 29.0,
+        "dt": 1.0,
+        "page_id": "PAGE_INVERSE",
+        "previous_page_id": "PAGE_POSITIVE_DECAY",
+        "alive": true,
+        "delta": -0.4272544393989964,
+        "previous_delta": 0.23736357744388686,
+        "orientation": -1,
+        "previous_orientation": 1,
+        "tau_i": 30.0,
+        "transition_count": 7,
+        "orientation_switch_count": 21,
+        "book_age": 29.0,
+        "page_age": 0.0,
+        "invariant": {
+          "preserved": true,
+          "value": 0.4272544393989964,
+          "threshold": 0.05,
+          "reason": "Invariant preserved: |delta| >= threshold."
+        },
+        "metadata": {
+          "decay": 0.82,
+          "inverse_decay": 0.88,
+          "turn_threshold": 0.25,
+          "turn_boost": 1.8
+        }
+      }
+    ]
+  },
+  "journal": {
+    "events_count": 29,
+    "events": [
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "PAGE_REGISTERED",
+        "message": "Page registered: PAGE_POSITIVE_DECAY",
+        "data": {
+          "page_id": "PAGE_POSITIVE_DECAY",
+          "title": "Positive Decay Page",
+          "description": "Demo page with monotonic delta decay.",
+          "parameters": {}
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "INITIAL_PAGE_SET",
+        "message": "Initial page set: PAGE_POSITIVE_DECAY",
+        "data": {
+          "page_id": "PAGE_POSITIVE_DECAY"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "PAGE_REGISTERED",
+        "message": "Page registered: PAGE_INVERSE",
+        "data": {
+          "page_id": "PAGE_INVERSE",
+          "title": "Inverse Orientation Page",
+          "description": "Demo page that flips orientation during local dynamics.",
+          "parameters": {}
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "SPINE_REGISTERED",
+        "message": "Spine registered: SPINE_LOW_DELTA_TURN",
+        "data": {
+          "spine_id": "SPINE_LOW_DELTA_TURN",
+          "from_page": "PAGE_POSITIVE_DECAY",
+          "to_page": "PAGE_INVERSE",
+          "description": "Turn page when |delta| becomes too low."
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "SPINE_REGISTERED",
+        "message": "Spine registered: SPINE_RETURN_AFTER_INVERSION",
+        "data": {
+          "spine_id": "SPINE_RETURN_AFTER_INVERSION",
+          "from_page": "PAGE_INVERSE",
+          "to_page": "PAGE_POSITIVE_DECAY",
+          "description": "Return page after inversion when |delta| becomes too low."
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "STATE_INITIALIZED",
+        "message": "Book state initialized.",
+        "data": {
+          "step_index": 0,
+          "time": 0.0,
+          "dt": 1.0,
+          "page_id": "PAGE_POSITIVE_DECAY",
+          "previous_page_id": "",
+          "alive": true,
+          "delta": 1.0,
+          "previous_delta": 1.0,
+          "orientation": 1,
+          "previous_orientation": 1,
+          "tau_i": 0.0,
+          "transition_count": 0,
+          "orientation_switch_count": 0,
+          "book_age": 0.0,
+          "page_age": 0.0,
+          "metadata": {
+            "decay": 0.82,
+            "inverse_decay": 0.88,
+            "turn_threshold": 0.25,
+            "turn_boost": 1.8
+          }
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "RUN_STARTED",
+        "message": "Book environment run started.",
+        "data": {
+          "max_steps": 30
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "PAGE_TRANSITION",
+        "message": "Transition executed: PAGE_POSITIVE_DECAY -> PAGE_INVERSE",
+        "data": {
+          "spine_id": "SPINE_LOW_DELTA_TURN",
+          "from_page": "PAGE_POSITIVE_DECAY",
+          "to_page": "PAGE_INVERSE",
+          "step_index": 6,
+          "time": 6.0,
+          "delta": -0.4487138470218239,
+          "orientation": -1,
+          "orientation_changed": true,
+          "book_age": 6.0,
+          "page_age": 0.0
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 7,
+          "time": 7.0,
+          "from_orientation": -1,
+          "to_orientation": 1,
+          "delta": 0.39486818537920504,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 8,
+          "time": 8.0,
+          "from_orientation": 1,
+          "to_orientation": -1,
+          "delta": -0.3474840031337004,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 9,
+          "time": 9.0,
+          "from_orientation": -1,
+          "to_orientation": 1,
+          "delta": 0.30578592275765637,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 10,
+          "time": 10.0,
+          "from_orientation": 1,
+          "to_orientation": -1,
+          "delta": -0.2690916120267376,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 11,
+          "time": 11.0,
+          "from_orientation": -1,
+          "to_orientation": 1,
+          "delta": 0.23680061858352908,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "PAGE_TRANSITION",
+        "message": "Transition executed: PAGE_INVERSE -> PAGE_POSITIVE_DECAY",
+        "data": {
+          "spine_id": "SPINE_RETURN_AFTER_INVERSION",
+          "from_page": "PAGE_INVERSE",
+          "to_page": "PAGE_POSITIVE_DECAY",
+          "step_index": 11,
+          "time": 11.0,
+          "delta": -0.42624111345035237,
+          "orientation": -1,
+          "orientation_changed": true,
+          "book_age": 11.0,
+          "page_age": 0.0
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "PAGE_TRANSITION",
+        "message": "Transition executed: PAGE_POSITIVE_DECAY -> PAGE_INVERSE",
+        "data": {
+          "spine_id": "SPINE_LOW_DELTA_TURN",
+          "from_page": "PAGE_POSITIVE_DECAY",
+          "to_page": "PAGE_INVERSE",
+          "step_index": 14,
+          "time": 14.0,
+          "delta": 0.4230282784336089,
+          "orientation": 1,
+          "orientation_changed": true,
+          "book_age": 14.0,
+          "page_age": 0.0
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 15,
+          "time": 15.0,
+          "from_orientation": 1,
+          "to_orientation": -1,
+          "delta": -0.37226488502157584,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 16,
+          "time": 16.0,
+          "from_orientation": -1,
+          "to_orientation": 1,
+          "delta": 0.32759309881898674,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 17,
+          "time": 17.0,
+          "from_orientation": 1,
+          "to_orientation": -1,
+          "delta": -0.2882819269607083,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 18,
+          "time": 18.0,
+          "from_orientation": -1,
+          "to_orientation": 1,
+          "delta": 0.25368809572542333,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 19,
+          "time": 19.0,
+          "from_orientation": 1,
+          "to_orientation": -1,
+          "delta": -0.22324552423837254,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "PAGE_TRANSITION",
+        "message": "Transition executed: PAGE_INVERSE -> PAGE_POSITIVE_DECAY",
+        "data": {
+          "spine_id": "SPINE_RETURN_AFTER_INVERSION",
+          "from_page": "PAGE_INVERSE",
+          "to_page": "PAGE_POSITIVE_DECAY",
+          "step_index": 19,
+          "time": 19.0,
+          "delta": 0.4018419436290706,
+          "orientation": 1,
+          "orientation_changed": true,
+          "book_age": 19.0,
+          "page_age": 0.0
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "PAGE_TRANSITION",
+        "message": "Transition executed: PAGE_POSITIVE_DECAY -> PAGE_INVERSE",
+        "data": {
+          "spine_id": "SPINE_LOW_DELTA_TURN",
+          "from_page": "PAGE_POSITIVE_DECAY",
+          "to_page": "PAGE_INVERSE",
+          "step_index": 22,
+          "time": 22.0,
+          "delta": -0.3988130197947721,
+          "orientation": -1,
+          "orientation_changed": true,
+          "book_age": 22.0,
+          "page_age": 0.0
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 23,
+          "time": 23.0,
+          "from_orientation": -1,
+          "to_orientation": 1,
+          "delta": 0.35095545741939943,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 24,
+          "time": 24.0,
+          "from_orientation": 1,
+          "to_orientation": -1,
+          "delta": -0.3088408025290715,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 25,
+          "time": 25.0,
+          "from_orientation": -1,
+          "to_orientation": 1,
+          "delta": 0.2717799062255829,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "ORIENTATION_SWITCH",
+        "message": "Orientation changed during local page dynamics.",
+        "data": {
+          "step_index": 26,
+          "time": 26.0,
+          "from_orientation": 1,
+          "to_orientation": -1,
+          "delta": -0.23916631747851294,
+          "page_id": "PAGE_INVERSE"
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "PAGE_TRANSITION",
+        "message": "Transition executed: PAGE_INVERSE -> PAGE_POSITIVE_DECAY",
+        "data": {
+          "spine_id": "SPINE_RETURN_AFTER_INVERSION",
+          "from_page": "PAGE_INVERSE",
+          "to_page": "PAGE_POSITIVE_DECAY",
+          "step_index": 26,
+          "time": 26.0,
+          "delta": 0.4304993714613233,
+          "orientation": 1,
+          "orientation_changed": true,
+          "book_age": 26.0,
+          "page_age": 0.0
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "PAGE_TRANSITION",
+        "message": "Transition executed: PAGE_POSITIVE_DECAY -> PAGE_INVERSE",
+        "data": {
+          "spine_id": "SPINE_LOW_DELTA_TURN",
+          "from_page": "PAGE_POSITIVE_DECAY",
+          "to_page": "PAGE_INVERSE",
+          "step_index": 29,
+          "time": 29.0,
+          "delta": -0.4272544393989964,
+          "orientation": -1,
+          "orientation_changed": true,
+          "book_age": 29.0,
+          "page_age": 0.0
+        }
+      },
+      {
+        "timestamp": "2026-06-20T17:15:54",
+        "event_type": "RUN_FINISHED",
+        "message": "Book environment run finished.",
+        "data": {
+          "final_state": {
+            "step_index": 30,
+            "time": 30.0,
+            "dt": 1.0,
+            "page_id": "PAGE_INVERSE",
+            "previous_page_id": "PAGE_POSITIVE_DECAY",
+            "alive": true,
+            "delta": -0.4272544393989964,
+            "previous_delta": 0.23736357744388686,
+            "orientation": -1,
+            "previous_orientation": 1,
+            "tau_i": 30.0,
+            "transition_count": 7,
+            "orientation_switch_count": 21,
+            "book_age": 30.0,
+            "page_age": 1.0,
+            "metadata": {
+              "decay": 0.82,
+              "inverse_decay": 0.88,
+              "turn_threshold": 0.25,
+              "turn_boost": 1.8
+            }
+          },
+          "snapshots_count": 30,
+          "events_count": 28
+        }
+      }
+    ]
+  }
+}
