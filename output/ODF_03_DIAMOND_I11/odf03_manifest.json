@@ -1,0 +1,100 @@
+{
+  "study": "ODF-03 Diamond I11 Project M",
+  "generated_utc": "2026-10-22T07:09:53.914294+00:00",
+  "data_source": "https://doi.org/10.5281/zenodo.7871450",
+  "proposal_id": "EE15723-1",
+  "beamline": "I11",
+  "instrument": "Mythen II",
+  "baseline_type": "locally recorded SHA256",
+  "files": {
+    "578401-mythen_summedSILICON640C.xye": {
+      "sha256": "6D1806FC791FD162036735FBFA2679B445D25F5F5CC3A289AB346A729C16C2F8",
+      "size_bytes": 730354
+    },
+    "578412-mythen_summed.xye": {
+      "sha256": "12317867B92CE27D5A309212A8160ED543AF2BEBC7A7BB4914D96D59D6E7EF6E",
+      "size_bytes": 737267
+    },
+    "578413-mythen_summed.xye": {
+      "sha256": "EB54644F1E09363D35BDA5ECA06A1B2DAA71FEDA9AAD85FBFB9FE15A2BF3CA1D",
+      "size_bytes": 735346
+    },
+    "ProjectM_DiffractionData.xlsx": {
+      "sha256": "703E46C842BA3263180652065A3F6269B2947F85E30C6B80E546B9208A9E4695",
+      "size_bytes": 103331
+    }
+  },
+  "xye_metrics": {
+    "578401-mythen_summedSILICON640C.xye": {
+      "points": 22508,
+      "axis_first": 12.084,
+      "axis_last": 102.112,
+      "axis_step_min": 0.004,
+      "axis_step_max": 0.004,
+      "mean_intensity": 14524.175137471166,
+      "max_intensity": 3851706.195953
+    },
+    "578412-mythen_summed.xye": {
+      "points": 22508,
+      "axis_first": 2.084,
+      "axis_last": 92.112,
+      "axis_step_min": 0.004,
+      "axis_step_max": 0.004,
+      "mean_intensity": 15489.470770217209,
+      "max_intensity": 2105239.493499
+    },
+    "578413-mythen_summed.xye": {
+      "points": 22508,
+      "axis_first": 2.084,
+      "axis_last": 92.112,
+      "axis_step_min": 0.004,
+      "axis_step_max": 0.004,
+      "mean_intensity": 14843.92291537224,
+      "max_intensity": 2052986.022867
+    }
+  },
+  "asp_metadata": {
+    "578412-mythen_summed.xye": {
+      "worksheet": "Asp",
+      "excel_row": 4,
+      "experimental_condition_value": 0.0,
+      "experimental_condition_units": "not specified in inspected header",
+      "rwp_percent": 6.3161,
+      "calcite_a_angstrom": 4.99719,
+      "calcite_c_angstrom": 17.05744,
+      "calcite_volume_angstrom3": 368.8899,
+      "vaterite_a_angstrom": 4.12747,
+      "vaterite_c_angstrom": 8.47313,
+      "vaterite_volume_angstrom3": 125.0096
+    },
+    "578413-mythen_summed.xye": {
+      "worksheet": "Asp",
+      "excel_row": 5,
+      "experimental_condition_value": 0.1,
+      "experimental_condition_units": "not specified in inspected header",
+      "rwp_percent": 6.0403,
+      "calcite_a_angstrom": 4.99568,
+      "calcite_c_angstrom": 17.07568,
+      "calcite_volume_angstrom3": 369.0606,
+      "vaterite_a_angstrom": 4.12675,
+      "vaterite_c_angstrom": 8.47646,
+      "vaterite_volume_angstrom3": 125.01476
+    }
+  },
+  "audits": {
+    "sha256_baseline": true,
+    "xye_valid": true,
+    "asp_exact_match": true,
+    "negative_broken_reference_detected": true,
+    "full_angular_grid_equal": true,
+    "negative_interior_grid_detected": true,
+    "core_required_fields": true
+  },
+  "limitations": [
+    "No direct silicon-to-Asp calibration relationship established",
+    "Concentration unit unspecified in inspected worksheet header",
+    "Neither physical causation nor beamline chronological steps reconstructed",
+    "SHA256 values not independently compared to Zenodo checksums",
+    "Grid comparison checks numerical coordinate identity, not instrument calibration"
+  ]
+}

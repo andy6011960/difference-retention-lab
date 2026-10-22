@@ -1,0 +1,53 @@
+{
+  "event": "ODF-03-DIAMOND-I11-ASP",
+  "origin": "Diamond Light Source I11, Project M, proposal EE15723-1, published dataset https://doi.org/10.5281/zenodo.7871450; local XYE files and workbook verified by SHA256 baseline.",
+  "tension": "T-ASP-0-TO-0.1",
+  "signals": [
+    "S-578412",
+    "S-578413",
+    "S-SILICON-578401"
+  ],
+  "invariants": [
+    "INV-REFERENTIAL-ORIGIN",
+    "INV-EXPERIMENT-CONTEXT"
+  ],
+  "ruptures": [],
+  "interpretation": "Provenance-preserving structural comparison (not phase identification)",
+  "edges": [
+    {
+      "from": "ODF-03-DIAMOND-I11-ASP",
+      "to": "T-ASP-0-TO-0.1",
+      "type": "has_tension"
+    },
+    {
+      "from": "ODF-03-DIAMOND-I11-ASP",
+      "to": "S-578412",
+      "type": "produces_signal"
+    },
+    {
+      "from": "ODF-03-DIAMOND-I11-ASP",
+      "to": "S-578413",
+      "type": "produces_signal"
+    },
+    {
+      "from": "ODF-03-DIAMOND-I11-ASP",
+      "to": "S-SILICON-578401",
+      "type": "produces_signal"
+    },
+    {
+      "from": "ODF-03-DIAMOND-I11-ASP",
+      "to": "INV-REFERENTIAL-ORIGIN",
+      "type": "preserves_invariant"
+    },
+    {
+      "from": "ODF-03-DIAMOND-I11-ASP",
+      "to": "INV-EXPERIMENT-CONTEXT",
+      "type": "preserves_invariant"
+    },
+    {
+      "from": "ODF-03-DIAMOND-I11-ASP",
+      "to": "Provenance-preserving structural comparison (not phase identification)",
+      "type": "has_interpretation"
+    }
+  ]
+}

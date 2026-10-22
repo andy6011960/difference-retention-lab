@@ -1,0 +1,65 @@
+{
+  "event_id": "ODF-03-DIAMOND-I11-ASP",
+  "title": "Diamond I11 Project M: source-preserving contrast between Asp conditions",
+  "origin": "Diamond Light Source I11, Project M, proposal EE15723-1, published dataset https://doi.org/10.5281/zenodo.7871450; local XYE files and workbook verified by SHA256 baseline.",
+  "tension": {
+    "tension_id": "T-ASP-0-TO-0.1",
+    "description": "Relationship between changed recorded condition and distinct XRD profile/fit outcomes.",
+    "observed_change": "Asp worksheet condition value 0 -> 0.1; two distinct source files.",
+    "research_question": "Can ODF retain the documented provenance of both profiles and their analytical outcomes?"
+  },
+  "description": "Two XRD diffraction patterns from the Asp worksheet correspond to experimental-condition values 0 and 0.1. Silicon file is retained as a separately identified standard, with no asserted direct calibration link.",
+  "created_at": "2026-10-22T10:09:53",
+  "signals": [
+    {
+      "signal_id": "S-578412",
+      "signal_type": "XRD_XYE_WITH_WORKBOOK_CONTEXT",
+      "description": "Asp worksheet row 4; condition=0.0 (unit unspecified); points=22508; Rwp=6.3161%; SHA256=12317867B92CE27D5A309212A8160ED543AF2BEBC7A7BB4914D96D59D6E7EF6E",
+      "source": "https://doi.org/10.5281/zenodo.7871450 / ProjectM_DiffractionData.xlsx / Asp / 578412-mythen_summed.xye",
+      "time_range": null,
+      "file_ref": "578412-mythen_summed.xye"
+    },
+    {
+      "signal_id": "S-578413",
+      "signal_type": "XRD_XYE_WITH_WORKBOOK_CONTEXT",
+      "description": "Asp worksheet row 5; condition=0.1 (unit unspecified); points=22508; Rwp=6.0403%; SHA256=EB54644F1E09363D35BDA5ECA06A1B2DAA71FEDA9AAD85FBFB9FE15A2BF3CA1D",
+      "source": "https://doi.org/10.5281/zenodo.7871450 / ProjectM_DiffractionData.xlsx / Asp / 578413-mythen_summed.xye",
+      "time_range": null,
+      "file_ref": "578413-mythen_summed.xye"
+    },
+    {
+      "signal_id": "S-SILICON-578401",
+      "signal_type": "SEPARATELY_DOCUMENTED_SILICON_STANDARD_XYE",
+      "description": "Silicon standard XYE, 22508 points; SHA256=6D1806FC791FD162036735FBFA2679B445D25F5F5CC3A289AB346A729C16C2F8; relationship to Asp collection is unverified.",
+      "source": "https://doi.org/10.5281/zenodo.7871450 / 578401-mythen_summedSILICON640C.xye",
+      "time_range": null,
+      "file_ref": "578401-mythen_summedSILICON640C.xye"
+    }
+  ],
+  "invariants": [
+    {
+      "invariant_id": "INV-REFERENTIAL-ORIGIN",
+      "name": "Source-file identity retained",
+      "value": "2/2 Asp references matched exact Excel filenames; 4/4 SHA256 baseline",
+      "description": "Workbook relation and file checks were independently validated before event creation."
+    },
+    {
+      "invariant_id": "INV-EXPERIMENT-CONTEXT",
+      "name": "Asp provenance context",
+      "value": "Asp: condition 0 -> 0.1; same experimental-group worksheet",
+      "description": "Does not assert repeated observations of the same specimen or causal effect."
+    }
+  ],
+  "ruptures": [],
+  "interpretation": {
+    "model_name": "Provenance-preserving structural comparison (not phase identification)",
+    "description": "Experimental-condition values and reported fit metrics differ. This run audits source relationships and does not infer a new physical phase, causal mechanism, or undocumented chronology.",
+    "confidence": null,
+    "linked_ruptures": []
+  },
+  "notes": [
+    "No physical rupture/emergence claimed; rupture list intentionally empty.",
+    "ODF core origin_check validates required fields only; stricter source and linkage checks are runner-level.",
+    "The negative control modifies an in-memory copy of the reference key, never original files."
+  ]
+}
